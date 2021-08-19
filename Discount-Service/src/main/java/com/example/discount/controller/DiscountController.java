@@ -29,6 +29,12 @@ public class DiscountController {
 
 	@Autowired
 	private DiscountService discountService;
+	
+	@GetMapping("/home")
+	public String get() {
+		return "welcome";
+		
+	}
 
 	@PostMapping("/add")
 	public void addDiscount(@RequestBody DiscountModel discountModel) {
