@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -41,5 +42,10 @@ public class BookingController {
 		List<BookingModel> list= bookingService.getByEmail(email);
 		return new ResponseEntity<List<BookingModel>>(list, HttpStatus.OK);
 		
+	}
+	
+	@DeleteMapping("/cancel/{id}")
+	public void cancelBooking(@PathVariable int id) {
+		bookingService.cancelBooking(id);
 	}
 }

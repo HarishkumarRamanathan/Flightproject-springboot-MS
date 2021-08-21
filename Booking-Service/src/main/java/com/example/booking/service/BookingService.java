@@ -12,6 +12,8 @@ public interface BookingService {
 
 	List<BookingModel> getByEmail(String email);
 
+	void cancelBooking(int id);
+
 	
 
 }

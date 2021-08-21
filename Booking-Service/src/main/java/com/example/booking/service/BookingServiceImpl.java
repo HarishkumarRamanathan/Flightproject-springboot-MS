@@ -95,4 +95,12 @@ public class BookingServiceImpl implements BookingService {
 		return bookingModels;
 	}
 
+
+
+	@Override
+	public void cancelBooking(int id) {
+		bookingRepo.deleteById(id);
+		
+	}
+
 }
