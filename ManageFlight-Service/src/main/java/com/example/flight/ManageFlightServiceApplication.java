@@ -7,7 +7,7 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
 @SpringBootApplication
 @EnableCaching
-@EnableEurekaClient
+@EnableEurekaClient	
 public class ManageFlightServiceApplication {
 
 	public static void main(String[] args) {
