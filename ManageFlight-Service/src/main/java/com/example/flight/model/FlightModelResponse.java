@@ -27,7 +27,8 @@ public class FlightModelResponse {
 	private double price;
 	private int noOfRows;
 	private List<String> meal;
-	
+	private String status;
+
 	public String getAirlineName() {
 		return airlineName;
 	}
@@ -100,7 +101,6 @@ public class FlightModelResponse {
 		this.price = price;
 	}
 
-
 	public int getNoOfRows() {
 		return noOfRows;
 	}
@@ -125,8 +125,6 @@ public class FlightModelResponse {
 		this.meal = meal;
 	}
 
-	
-
 	public int getId() {
 		return id;
 	}
@@ -135,10 +133,17 @@ public class FlightModelResponse {
 		this.id = id;
 	}
 
-	
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
 	public FlightModelResponse(int id, String airlineName, String fromPlace, String toPlace, LocalTime startDateTime,
 			LocalTime endDateTime, List<String> scheduledDays, String instrumentUsed, int totalNoOfSeats,
-			int totalNoOfBussinessSeats, double price, int noOfRows, List<String> meal) {
+			int totalNoOfBussinessSeats, double price, int noOfRows, List<String> meal, String status) {
 		this.id = id;
 		this.airlineName = airlineName;
 		this.fromPlace = fromPlace;
@@ -152,7 +157,10 @@ public class FlightModelResponse {
 		this.price = price;
 		this.noOfRows = noOfRows;
 		this.meal = meal;
+		this.status = status;
 	}
+
+
 
 	@Override
 	public String toString() {
@@ -160,8 +168,9 @@ public class FlightModelResponse {
 				+ ", toPlace=" + toPlace + ", startDateTime=" + startDateTime + ", endDateTime=" + endDateTime
 				+ ", scheduledDays=" + scheduledDays + ", instrumentUsed=" + instrumentUsed + ", totalNoOfSeats="
 				+ totalNoOfSeats + ", totalNoOfBussinessSeats=" + totalNoOfBussinessSeats + ", price=" + price
-				+ ", noOfRows=" + noOfRows + ", meal=" + meal + "]";
+				+ ", noOfRows=" + noOfRows + ", meal=" + meal + ", status=" + status + "]";
 	}
 
-	public FlightModelResponse() {}
+	public FlightModelResponse() {
+	}
 }

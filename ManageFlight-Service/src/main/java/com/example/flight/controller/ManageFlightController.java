@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.flight.configuration.ApplicationConstant;
 import com.example.flight.entity.ManageFlightEntity;
 import com.example.flight.model.FlightModel;
 import com.example.flight.model.FlightModelResponse;
@@ -31,10 +33,28 @@ public class ManageFlightController {
 
 	@Autowired
 	private ManageFlightService manageFlightService;
+	
+	@Autowired
+	private KafkaTemplate<String, List<FlightModelResponse>> kafkaTemplate;
+	
+//	private static final String TOPIC = "kafka_topic_name";
+
 
 	@GetMapping("/home")
 	public String index() {
 		return "welcome";
+	}
+	
+	@GetMapping("/publish")
+	public String sendMessage() {
+		List<FlightModelResponse> list = manageFlightService.getAll();
+		try {
+			kafkaTemplate.send(ApplicationConstant.TOPIC_NAME, list);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "Message not sent ";
+		}
+		return "Message sent succuessfully";
 	}
 
 	@PostMapping("/addflight")

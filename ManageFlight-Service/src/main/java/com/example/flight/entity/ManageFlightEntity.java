@@ -8,7 +8,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-
 @Entity
 @Table(name = "manage_flight")
 public class ManageFlightEntity {
@@ -23,15 +22,15 @@ public class ManageFlightEntity {
 	private LocalTime endDateTime;
 
 	private String scheduleDays;
-	
+
 	private String instrumentUsed;
 	private int totalNoOfSeats;
 	private int totalNoOfBussinessSeats;
 	private double price;
 	private int NoOfRows;
-
 	private String meals;
-
+	private String status;
+	
 	public int getFlightId() {
 		return flightId;
 	}
@@ -79,8 +78,6 @@ public class ManageFlightEntity {
 	public void setEndDateTime(LocalTime endDateTime) {
 		this.endDateTime = endDateTime;
 	}
-
-
 
 	public String getInstrumentUsed() {
 		return instrumentUsed;
@@ -138,6 +135,13 @@ public class ManageFlightEntity {
 		this.meals = meals;
 	}
 
+	public String getStatus() {
+		return status;
+	}
 
+	public void setStatus(String status) {
+		this.status = status;
+	}
 
+	
 }

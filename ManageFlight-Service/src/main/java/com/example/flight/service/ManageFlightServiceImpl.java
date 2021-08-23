@@ -53,7 +53,7 @@ public class ManageFlightServiceImpl implements ManageFlightService {
 		manageFlightEntity.setTotalNoOfBussinessSeats(flightModel.getTotalNoOfBussinessSeats());
 		manageFlightEntity.setPrice(flightModel.getPrice());
 		manageFlightEntity.setNoOfRows(flightModel.getNoOfRows());
-
+		
 		String food = "";
 		boolean mealValue = false;
 		for (String f : flightModel.getMeal()) {
@@ -65,6 +65,7 @@ public class ManageFlightServiceImpl implements ManageFlightService {
 			mealValue = true;
 		}
 		manageFlightEntity.setMeals(food);
+		manageFlightEntity.setStatus(flightModel.getStatus());
 		manageFlightRepo.save(manageFlightEntity);
 	}
 
@@ -77,7 +78,7 @@ public class ManageFlightServiceImpl implements ManageFlightService {
 			models.add(new FlightModelResponse(m.getFlightId(), m.getAirlineName(), m.getFromPlace(), m.getToPlace(),
 					m.getStartDateTime(), m.getEndDateTime(), Arrays.asList(m.getScheduleDays().split(",")),
 					m.getInstrumentUsed(), m.getTotalNoOfSeats(), m.getTotalNoOfBussinessSeats(), m.getPrice(),
-					m.getNoOfRows(), Arrays.asList(m.getMeals().split(","))));
+					m.getNoOfRows(), Arrays.asList(m.getMeals().split(",")),m.getStatus()));
 		}
 		return models;
 	}
@@ -132,6 +133,8 @@ public class ManageFlightServiceImpl implements ManageFlightService {
 				mealValue = true;
 			}
 			entity.setMeals(food);
+			entity.setStatus(flightModelResponse.getStatus());
+			System.out.println(flightModelResponse.getStatus());
 			manageFlightRepo.save(entity);
 		}
 
@@ -150,7 +153,7 @@ public class ManageFlightServiceImpl implements ManageFlightService {
 					m.getToPlace(), m.getStartDateTime(), m.getEndDateTime(),
 					Arrays.asList(m.getScheduleDays().split(",")), m.getInstrumentUsed(), m.getTotalNoOfSeats(),
 					m.getTotalNoOfBussinessSeats(), m.getPrice(), m.getNoOfRows(),
-					Arrays.asList(m.getMeals().split(",")));
+					Arrays.asList(m.getMeals().split(",")),m.getStatus());
 		}
 
 		return flightModelResponse;

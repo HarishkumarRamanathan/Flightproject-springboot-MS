@@ -28,7 +28,8 @@ public class FlightModel {
 	private double price;
 	private int noOfRows;
 	private List<String> meal;
-	
+	private String status;
+
 	public int getId() {
 		return id;
 	}
@@ -134,10 +135,17 @@ public class FlightModel {
 		this.meal = meal;
 	}
 
-	
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
 	public FlightModel(int id,String airlineName, String fromPlace, String toPlace, LocalTime startDateTime,
 			LocalTime endDateTime, List<String> scheduledDays, String instrumentUsed, int totalNoOfSeats,
-			int totalNoOfBussinessSeats, double price, int noOfRows, List<String> meal) {
+			int totalNoOfBussinessSeats, double price, int noOfRows, List<String> meal, String status) {
 		this.id=id;
 		this.airlineName = airlineName;
 		this.fromPlace = fromPlace;
@@ -151,6 +159,7 @@ public class FlightModel {
 		this.price = price;
 		this.noOfRows = noOfRows;
 		this.meal = meal;
+		this.status=status;
 	}
 
 	@Override
